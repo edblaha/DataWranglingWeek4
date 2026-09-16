@@ -1,5 +1,78 @@
 ---
-title: "DWV Assignment 4.qmd"
-format: html
+title: "Week 3 Homework"
+author: "Edward Blaha"
+format: 
+  html: default
+  docx: default
 editor: source
 ---
+
+## **Part 1 - Lines**
+
+```{r}
+graphics.off()
+
+plot(x=0, type='n', xlim=c(-20,20), ylim=c(-20,20),
+     xlab="X", ylab="Y", main=" Drawing y=4x+3 ")
+abline(h=0, v=0, col = "gray")
+
+
+abline(a=3, 
+       b=4, 
+       col = "seagreen2", 
+       lty = "dashed")
+text(4,6, "y=4x+3", col = "seagreen2")
+
+
+
+```
+
+**Bonus**
+
+```{r}
+graphics.off()
+
+plot(x=0, type='n', xlim=c(-20,20), ylim=c(-20,20),
+     xlab="X", ylab="Y", main=" Lines ")
+abline(h=0, v=0, col = "gray")
+
+
+abline(a=3, 
+       b=4, 
+       col = "seagreen2", 
+       lty = "dashed")
+text(4,6, "y=4x+3", col = "seagreen2")
+
+abline(a=2,  b=6,  col = "turquoise4",  lty = "dotdash", lwd = 1)
+abline(a=0.1,  b=2,  col = "violetred2",  lty = "solid", lwd = 2.5)
+abline(a=1,  b=0.5,  col = "yellow",  lty = "longdash", lwd = 5)
+abline(a=0,  b=4,  col = "red",  lty = "longdash", lwd = 1.5)
+abline(a=2,  b=-6,  col = "turquoise4",  lty = "dotdash")
+abline(a=0.1,  b=-2,  col = "black",  lty = "solid", lwd = 2.5)
+abline(a=1,  b=-0.5,  col = "purple",  lty = "longdash")
+abline(a=20,  b=100,  col = "orange",  lty = "longdash", lwd = 4)
+
+```
+
+## **Part 2: Protected Lands**
+Find the mean, standard deviation, and range of each of the three variables: protected lands, GDP per capita, and total GDP.
+Create a scatterplot where “protected lands” is on the Y axis and GDP per capita is on the X axis. Place a title on the graph and labels on the X and Y axis appropriately.
+Create a scatterplot where “protected lands” is on the Y axis and total GDP is on the X axis. Place a title on the graph and labels on the X and Y axis appropriately.
+Regress “protected lands” on GDP per capita.
+Create a scatterplot where “protected lands” is on the Y axis and GDP per capita is on the X axis. Then, overlay the plot with a best fit line.
+Regress “protected land” on total GDP.
+Create a scatterplot where “protected lands” is on the Y axis and total GDP is on the X axis. Then, overlay the plot with a best fit line.
+``` {R}
+ProtectedLands <- read.csv("~/DataWrangling/Week4HW/DataWranglingWeek4/protected_lands.csv")
+mean(ProtectedLands$protected_lands)
+mean(ProtectedLands$gdp_percap)
+mean(ProtectedLands$tot_gdp_bilions)
+
+sd(ProtectedLands$protected_lands)
+sd(ProtectedLands$gdp_percap)
+sd(ProtectedLands$tot_gdp_bilions)
+
+range(ProtectedLands$protected_lands)
+range(ProtectedLands$gdp_percap)
+range(ProtectedLands$tot_gdp_bilions)
+```
