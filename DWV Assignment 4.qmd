@@ -10,7 +10,6 @@ editor: source
 ## **Part 1 - Lines**
 
 ```{r}
-graphics.off()
 
 plot(x=0, type='n', xlim=c(-20,20), ylim=c(-20,20),
      xlab="X", ylab="Y", main=" Drawing y=4x+3 ")
@@ -30,7 +29,7 @@ text(4,6, "y=4x+3", col = "seagreen2")
 **Bonus**
 
 ```{r}
-graphics.off()
+
 
 plot(x=0, type='n', xlim=c(-20,20), ylim=c(-20,20),
      xlab="X", ylab="Y", main=" Lines ")
@@ -55,14 +54,8 @@ abline(a=20,  b=100,  col = "orange",  lty = "longdash", lwd = 4)
 ```
 
 ## **Part 2: Protected Lands**
-Find the mean, standard deviation, and range of each of the three variables: protected lands, GDP per capita, and total GDP.
-Create a scatterplot where “protected lands” is on the Y axis and GDP per capita is on the X axis. Place a title on the graph and labels on the X and Y axis appropriately.
-Create a scatterplot where “protected lands” is on the Y axis and total GDP is on the X axis. Place a title on the graph and labels on the X and Y axis appropriately.
-Regress “protected lands” on GDP per capita.
-Create a scatterplot where “protected lands” is on the Y axis and GDP per capita is on the X axis. Then, overlay the plot with a best fit line.
-Regress “protected land” on total GDP.
-Create a scatterplot where “protected lands” is on the Y axis and total GDP is on the X axis. Then, overlay the plot with a best fit line.
-``` {R}
+
+```{R}
 ProtectedLands <- read.csv("~/DataWrangling/Week4HW/DataWranglingWeek4/protected_lands.csv")
 mean(ProtectedLands$protected_lands)
 mean(ProtectedLands$gdp_percap)
@@ -75,4 +68,34 @@ sd(ProtectedLands$tot_gdp_bilions)
 range(ProtectedLands$protected_lands)
 range(ProtectedLands$gdp_percap)
 range(ProtectedLands$tot_gdp_bilions)
+
+
+plot(ProtectedLands$gdp_percap, ProtectedLands$protected_lands, 
+     main = "Protected Lands and GDP Per Capita",
+     xlab = "GDP Per Capita",
+     ylab = "Protected Lands")
+
+plot(ProtectedLands$tot_gdp_bilions, ProtectedLands$protected_lands, 
+     main = "Protected Lands and GDP",
+     xlab = "GDP (Billions)",
+     ylab = "Protected Lands")
+
+PerCapProtLandRegress <- lm(ProtectedLands$protected_lands ~ ProtectedLands$gdp_percap)
+PerCapProtLandRegress
+plot(ProtectedLands$gdp_percap, ProtectedLands$protected_lands, 
+     main = "Protected Lands and GDP Per Capita",
+     xlab = "GDP Per Capita",
+     ylab = "Protected Lands")
+abline(PerCapProtLandRegress, col = "turquoise", lwd = 4)
+
+
+TotGDPProtLandRegress <- lm(ProtectedLands$protected_lands ~ ProtectedLands$tot_gdp_bilions)
+TotGDPProtLandRegress
+plot(ProtectedLands$tot_gdp_bilions, ProtectedLands$protected_lands, 
+     main = "Protected Lands and Total GDP",
+     xlab = "GDP (Billions)",
+     ylab = "Protected Lands")
+abline(TotGDPProtLandRegress, col = "red", lwd = 4)
+
+
 ```
